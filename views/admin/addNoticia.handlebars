@@ -1,3 +1,4 @@
+
 {{#each erros}}
     <div class="alert alert-danger">{{texto}}</div>
     {{else}}
@@ -7,8 +8,8 @@
 
 <div class="card">
     <div class="card-body">
-        <h4>Nova Postagem</h4>
-        <form action="/admin/postagens/nova" method="POST">
+        <h4>Nova Noticia</h4>
+        <form action="/admin/noticias/nova" method="POST">
             <label for="titulo">Título</label>
             <input type="text" name="titulo" id="titulo" class="form-control">
 
@@ -33,7 +34,7 @@
             <label>Publicado por:</label>
             <input name="autor" id="autor" value="{{user.nome}}" class="form-control">
 
-            <button class="btn btn-success mt-4" type="submit">Criar Postagem</button>
+            <button class="btn btn-success mt-4" type="submit">Criar noticia</button>
         </form>
     </div>
 </div>

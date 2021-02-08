@@ -7,21 +7,21 @@
 
 <div class="card">
     <div class="card-body">
-        <h4>Editar Postagem</h4>
-        <form action="/admin/postagem/edit" method="POST">
-            <input type="hidden" name="id" value="{{postagem._id}}">
+        <h4>Editar noticia</h4>
+        <form action="/admin/noticia/edit" method="POST">
+            <input type="hidden" name="id" value="{{noticia._id}}">
 
             <label for="titulo">Título</label>
-            <input type="text" name="titulo" id="titulo" value="{{postagem.titulo}}"  class="form-control">
+            <input type="text" name="titulo" id="titulo" value="{{noticia.titulo}}"  class="form-control">
 
             <label for="slug">Slug: </label>
-            <input type="text" name="slug" id="slug" value="{{postagem.slug}}" class="form-control">
+            <input type="text" name="slug" id="slug" value="{{noticia.slug}}" class="form-control">
 
             <label for="descricao">Descrição: </label>
-            <input type="text" name="descricao" id="descricao" value="{{postagem.descricao}}" class="form-control">
+            <input type="text" name="descricao" id="descricao" value="{{noticia.descricao}}" class="form-control">
 
             <label for="conteudo">Conteúdo: </label>
-            <textarea name="conteudo" class="form-control">{{postagem.conteudo}}"</textarea>
+            <textarea name="conteudo" class="form-control">{{noticia.conteudo}}"</textarea>
 
             <label for="categoria">Categoria</label>
             <select name="categoria" class="custom-select">

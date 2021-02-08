@@ -1,0 +1,20 @@
+<h2>Lista de noticias:</h2>
+<hr>
+<a href="/admin/noticias/add"><button class="btn btn-success">Nova noticia</button></a>
+
+{{#each noticias}}
+    <div class="card mt-4">
+        <div class="card-body">
+            <h4>Título: {{titulo}}</h4>
+            <p>Slug: {{slug}}</p>
+            <p>Descrição: {{descricao}}</p>
+            <small>Data da criação: {{#formatDate data}}  {{/formatDate}}</small><br>
+            <small>Categoria: {{categoria.nome}}</small>
+            <br>
+            <a href="/admin/noticias/edit/{{_id}}"><button class="mt-3 btn btn-success">Editar noticia</button></a>
+            <a href="/admin/noticias/deletar/{{_id}}"><button class="mt-3 btn btn-danger">Deletar noticia</button></a>
+        </div>
+    </div>
+{{else}}
+    <p>Nenhuma noticia registada.</p>
+{{/each}}

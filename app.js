@@ -2,7 +2,7 @@
     const express = require("express")
     const handlebars = require("express-handlebars")
     const bodyParser = require("body-parser")
-    const moment = require('moment') // formatar datas
+    const moment = require('moment')
 
     const app = express()
     const path = require("path")
@@ -10,8 +10,8 @@
     const session = require("express-session")
     const flash = require("connect-flash")
 
-    require("./models/Postagem")
-    const Postagem = mongoose.model("postagens")
+    require("./models/Noticia")
+    const Noticia = mongoose.model("noticias")
 
     require("./models/Categoria")
     const Categoria = mongoose.model("categorias")
@@ -23,7 +23,7 @@
     const passport = require("passport")
     require("./config/auth")(passport)
 
-    const {eAdmin} = require("./helpers/eAdmin") //{eAdmin}-> significa pegar apenas esta função    
+    const {eAdmin} = require("./helpers/eAdmin")    
 
     const db = require("./config/db")
 
@@ -58,7 +58,7 @@
     //Handlebars
         app.engine('handlebars', handlebars({
             defaultLayout: ('main'),
-            helpers: { // Helper -> usando para formatação de datas
+            helpers: { 
                 formatDate: (date) => {
                     return moment(date).format('DD/MM/YYYY')
                 }
@@ -72,9 +72,9 @@
 
     // Mongoose
         mongoose.connect(db.mongoURI, {useNewUrlParser: true}).then(() => {
-            console.log("Conectado ao MongoDB!")
+            console.log("Conectado ao Banco de dados!")
         }).catch((error) => {
-            console.log("Erro ao se conectar: "+ error)
+            console.log("Erro ao conectar: "+ error)
         }) 
  
     //Public 
@@ -86,27 +86,27 @@
     
     //Rota Principal
     app.get("/", (req, res) => {
-        Postagem.find().populate("categoria").sort({data: "desc"}).then((postagens) =>{
-            res.render("index", {postagens: postagens})
+        Noticia.find().populate("categoria").sort({data: "desc"}).then((noticias) =>{
+            res.render("index", {noticias: noticias})
         }).catch((error) => {
-            req.flash("error_msg", "Houve um erro interno.")
+            req.flash("error_msg", "Houve um erro interno." + error)
             res.redirect("/404")
         })
     }) 
     
-    //Postagem - Leia Mais
-    app.get("/postagem/:slug", (req, res) => {
-        Postagem.findOne({slug: req.params.slug}).then((postagem) =>{
+    //Noticia - Leia Mais
+    app.get("/Noticia/:slug", (req, res) => {
+        Noticia.findOne({slug: req.params.slug}).then((Noticia) =>{
 
-            if(postagem){
-               res.render("postagem/index", {postagem: postagem}) 
+            if(Noticia){
+               res.render("Noticia/index", {Noticia: Noticia}) 
             }else {
-               req.flash("error_msg", "Está postagem não existe.")
+               req.flash("error_msg", "Está Noticia não existe.")
                res.redirect("/")
             }
 
         }).catch((error) => {
-            req.flash("error_msg", "Houve um erro interno.")
+            req.flash("error_msg", "Houve um erro interno." + error)
             res.redirect("/")
         })    
     })
@@ -121,19 +121,19 @@
         }) 
     })
 
-    //Listar postagens pertencentes a uma certa categoria
+    //Listar noticias pertencentes a uma certa categoria
     app.get("/categorias/:slug", (req, res) =>{
         Categoria.findOne({slug: req.params.slug}).then((categoria) => {
 
             if(categoria){
                
-                Postagem.find({categoria: categoria._id}).then((postagens) => {
+                Noticia.find({categoria: categoria._id}).then((noticias) => {
 
-                    res.render("categorias/postagens", {postagens: postagens, categoria: categoria})
+                    res.render("categorias/noticias", {noticias: noticias, categoria: categoria})
 
                 }).catch((error) => {
 
-                    req.flash("error_msg", "Houve um erro ao listar as postagens.")
+                    req.flash("error_msg", "Houve um erro ao listar as noticias.")
                     res.redirect("/")
                 }) 
 
@@ -145,7 +145,7 @@
             }
 
         }).catch((error) => {
-            req.flash("error_msg", "Houve um erro interno ao carregar a página dessa categoria.")
+            req.flash("error_msg", "Houve um erro interno ao carregar a página dessa categoria." + error)
             res.redirect("/")
         })
     })
@@ -155,15 +155,15 @@
         res.send("Error 404!")
     })
     
-    //eAdmin -> Verificar se o usuário tem permissão de administrador
+    //eAdmin -> Verificar se o usuário tem permissão
     app.use('/admin', eAdmin, admin)
     app.use("/usuarios", usuarios)
 
 
-//Outros
+//Porta de acesso
 const PORT = process.env.PORT || 8081;
 app.listen(PORT, () =>{
-    console.log("Servidor rodando!");
+    console.log("Servidor ligado!");
 });
 
 

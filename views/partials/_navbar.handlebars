@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="/">Blog do Node JS</a>
+  <a class="navbar-brand" href="/">You informed</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -7,8 +7,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       
-      
-      {{!-- Verificando se o usuário logado é Admin, e se for mostrar essas opções de menu --}}
+      <!-- Verificando se o usuário logado é um Administrador, se for mostrar opções no menu -->
       {{#ifCond user.eAdmin 1}}
 
           <li class="nav-item active">
@@ -20,7 +19,7 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="/admin/postagens">Postagens</a>
+            <a class="nav-link" href="/admin/noticias">noticias</a>
           </li>
 
       {{else}}

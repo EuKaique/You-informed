@@ -1,6 +1,6 @@
 <h2>Lista de noticias:</h2>
 <hr>
-<a href="/admin/noticias/add"><button class="btn btn-success">Nova noticia</button></a>
+<a href="/admin/noticias/add"><button class="btn btn-azul">Nova noticia</button></a>
 
 {{#each noticias}}
     <div class="card mt-4">
@@ -11,8 +11,8 @@
             <small>Data da criação: {{#formatDate data}}  {{/formatDate}}</small><br>
             <small>Categoria: {{categoria.nome}}</small>
             <br>
-            <a href="/admin/noticias/edit/{{_id}}"><button class="mt-3 btn btn-success">Editar noticia</button></a>
-            <a href="/admin/noticias/deletar/{{_id}}"><button class="mt-3 btn btn-danger">Deletar noticia</button></a>
+            <a href="/admin/noticias/edit/{{_id}}"><button class="mt-3 btn btn-azul">Editar noticia</button></a>
+            <a href="/admin/noticias/deletar/{{_id}}"><button class="mt-3 btn btn-laranja">Deletar noticia</button></a>
         </div>
     </div>
 {{else}}

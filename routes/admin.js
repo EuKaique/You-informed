@@ -1,13 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
-
 require("../models/Categoria");
 const Categoria = mongoose.model("categorias");
-
 require("../models/Noticia");
 const Noticia = mongoose.model("noticias");
-
 const { eAdmin } = require("../helpers/eAdmin");
 
 router.get("/", (req, res) => {
@@ -27,7 +24,7 @@ router.get("/categorias", eAdmin, (req, res) => {
       res.render("admin/categorias", { categorias: categorias });
     })
     .catch((error) => {
-      req.flash("error_msg", "Houve um erro ao listar as categorias.");
+      //req.flash("error_msg", "Houve um erro ao listar as categorias.");
       res.redirect("/admin");
     });
 });
@@ -72,14 +69,16 @@ router.post("/categorias/nova", eAdmin, (req, res) => {
     new Categoria(novaCategoria)
       .save()
       .then(() => {
-        req.flash("success_msg", "Categoria criada com sucesso!");
+        //req.flash("success_msg", "Categoria criada com sucesso!");
         res.redirect("/admin/categorias");
       })
       .catch((error) => {
+        /*
         req.flash(
           "error_msg",
           "Houve um erro ao salvar a categoria, tenta novamente!"
         );
+        */
         res.redirect("/admin");
       });
   }
@@ -92,7 +91,7 @@ router.get("/categorias/edit/:id", eAdmin, (req, res) => {
       res.render("admin/editcategorias", { categoria: categoria });
     })
     .catch((error) => {
-      req.flash("error_msg", "Essa categoria não existe.");
+      //req.flash("error_msg", "Essa categoria não existe.");
       res.redirect("/admin/categorias");
     });
 });
@@ -106,19 +105,21 @@ router.post("/categorias/edit", eAdmin, (req, res) => {
       categoria
         .save()
         .then(() => {
-          req.flash("success_msg", "Categoria editada com sucesso!");
+         // req.flash("success_msg", "Categoria editada com sucesso!");
           res.redirect("/admin/categorias");
         })
         .catch((error) => {
+          /*
           req.flash(
             "error_msg",
             "Houve um erro interno ao salvar a edição da categoria."
           );
+          */
           res.redirect("/admin/categorias");
         });
     })
     .catch((error) => {
-      req.flash("error_msg", "Houve um erro ao editar categoria.");
+     // req.flash("error_msg", "Houve um erro ao editar categoria.");
       res.redirect("/admin/categorias");
     });
 });
@@ -128,11 +129,11 @@ router.post("/categorias/deletar", eAdmin, (req, res) => {
   //id vindo do formulario em método post
   Categoria.remove({ _id: req.body.id })
     .then(() => {
-      req.flash("success_msg", "Categoria deletada com sucesso!");
+     // req.flash("success_msg", "Categoria deletada com sucesso!");
       res.redirect("/admin/categorias");
     })
     .catch((error) => {
-      req.flash("error_msg", "Houve um erro ao deletar categoria.");
+     // req.flash("error_msg", "Houve um erro ao deletar categoria.");
       res.redirect("/admin/categorias");
     });
 });
@@ -146,7 +147,7 @@ router.get("/noticias", eAdmin, (req, res) => {
       res.render("admin/noticias", { noticias: noticias });
     })
     .catch((error) => {
-      req.flash("error_msg", "Houve um erro ao listar as noticias." + error);
+      //req.flash("error_msg", "Houve um erro ao listar as noticias." + error);
       res.redirect("/admin");
     });
 });
@@ -158,7 +159,7 @@ router.get("/noticias/add", eAdmin, (req, res) => {
       res.render("admin/addNoticia", { categorias: categorias });
     })
     .catch((error) => {
-      req.flash("error_msg", "Houve um erro ao carregar o formulário");
+      //req.flash("error_msg", "Houve um erro ao carregar o formulário");
       res.redirect("/admin");
     });
 });
@@ -189,14 +190,16 @@ router.post("/noticias/nova", eAdmin, (req, res) => {
     new Noticia(novaNoticia)
       .save()
       .then(() => {
-        req.flash("success_msg", "Noticia criada com sucesso.");
+        //req.flash("success_msg", "Noticia criada com sucesso.");
         res.redirect("/admin/noticias");
       })
       .catch((error) => {
+        /*
         req.flash(
           "error_msg",
           "Houve um erro ao cadastrar Noticia, tente novamente."
         );
+        */
         res.redirect("/admin/noticias");
       });
   }
@@ -214,19 +217,21 @@ router.get("/noticias/edit/:id", eAdmin, (req, res) => {
             Noticia: Noticia,
           });
         })
+        /*
         .catch((error) => {
           req.flash("error_msg", "Houve um erro ao listar as categorias.");
+        */  
           res.redirect("/admin/noticias");
         });
-    })
+    /*
     .catch((error) => {
       req.flash(
         "error_msg",
         "Houve um erro ao carregar o formulário de edição."
       );
+      */
       res.redirect("/admin/noticias");
     });
-});
 
 //Salvar a edição da Noticia
 router.post("/Noticia/edit", eAdmin, (req, res) => {
@@ -241,17 +246,17 @@ router.post("/Noticia/edit", eAdmin, (req, res) => {
 
       Noticia.save()
         .then(() => {
-          req.flash("success_msg", "Noticia editada com sucesso.");
+         // req.flash("success_msg", "Noticia editada com sucesso.");
           res.redirect("/admin/noticias");
         })
         .catch((error) => {
-          req.flash("error_msg", "Houve um erro ao editar a Noticia.");
+         // req.flash("error_msg", "Houve um erro ao editar a Noticia.");
           res.redirect("/admin/noticias");
         });
     })
     .catch((error) => {
       console.log(error);
-      req.flash("error_msg", "Houve um erro ao salvar a edição.");
+      //req.flash("error_msg", "Houve um erro ao salvar a edição.");
       res.redirect("/admin/noticias");
     });
 });
@@ -260,11 +265,11 @@ router.post("/Noticia/edit", eAdmin, (req, res) => {
 router.get("/noticias/deletar/:id", eAdmin, (req, res) => {
   Noticia.remove({ _id: req.params.id })
     .then(() => {
-      req.flash("error_msg", "Noticia deletada com sucesso.");
+      //req.flash("error_msg", "Noticia deletada com sucesso.");
       res.redirect("/admin/noticias");
     })
     .catch((error) => {
-      req.flash("error_msg", "Houve um erro interno.");
+      //req.flash("error_msg", "Houve um erro interno.");
       res.redirect("/admin/noticias");
     });
 });

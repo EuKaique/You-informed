@@ -1,10 +1,10 @@
 <div class="card">
     <div class="card-body">
-        <h1>{{noticia.titulo}}</h1>
+        <h2>{{Noticia.titulo}}</h2>
         <hr>
-        <small>Autor: {{noticia.autor}} </small><br>
-        <small>Data de Publicação: {{#formatDate noticia.data}}{{/formatDate}}</small><br>
+        <small>Autor: {{Noticia.autor}} </small><br>
+        <small>Data de Publicação: {{#formatDate Noticia.data}}{{/formatDate}}</small><br>
         <hr>
-        {{noticia.conteudo}}
+        <p>{{Noticia.conteudo}}</p>
     </div>
 </div>

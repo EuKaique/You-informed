@@ -4,6 +4,10 @@
  * Copyright 2011-2019 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+
+/* Fonte do Google fonts - Archivo */
+ @import url('https://fonts.googleapis.com/css2?family=Archivo&display=swap');
+
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
@@ -42,19 +46,78 @@
 }
 
 html {
-  font-family: sans-serif;
+  font-family: 'Archivo', sans-serif;
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
+#footer > div.container{
+  padding: 2rem 0 0.1rem 0;
+  text-align: center;
+}
+ul.icons {
+  cursor: default;
+  list-style: none;
+  padding-left: 0;
+}
 
+ul.icons li {
+  display: inline-block;
+  padding: 0 1rem 0 0;
+}
+
+ul.icons li:last-child {
+  padding-right: 0;
+}
+
+ul.icons li .icon:before {
+  font-size: 2.5rem;
+}
+.github{
+  width: 48px;
+  height: 48px;
+  opacity: 0.5;
+}
+.github:hover{
+  opacity: 1;
+}
+.facebook{
+  width: 48px;
+  height: 48px;
+  opacity: 0.5;
+}
+.facebook:hover{
+  opacity: 1;
+}
+.instagram{
+  width: 48px;
+  height: 48px;
+  opacity: 0.5;
+}
+.instagram:hover{
+  opacity: 1;
+}
+.whatsapp{
+  width: 48px;
+  height: 48px;
+  opacity: 0.5;
+}
+.whatsapp:hover{
+  opacity: 1;
+}
+div.copyright{
+  color: rgba(43, 43, 43, 0.75);
+  font-size: 1.1rem;
+  margin-bottom: 40px;
+  text-align: center;
+}
 article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block;
 }
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: 'Archivo', sans-serif;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -551,8 +614,13 @@ pre code {
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+  margin-top: 30px;
 }
-
+.img-cabecalho{
+  height: 48px;
+  width: 48px;
+  margin-right: 5px;
+}
 @media (min-width: 576px) {
   .container {
     max-width: 540px;
@@ -1875,7 +1943,12 @@ pre code {
     transition: none;
   }
 }
-
+a>button{
+  text-decoration: none;
+}
+a >button:hover{
+  color: white;
+}
 .form-control::-ms-expand {
   background-color: transparent;
   border: 0;
@@ -2299,7 +2372,6 @@ textarea.form-control {
   border-color: #dc3545;
   box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
 }
-
 .form-inline {
   display: -ms-flexbox;
   display: flex;
@@ -2307,6 +2379,7 @@ textarea.form-control {
   flex-flow: row wrap;
   -ms-flex-align: center;
   align-items: center;
+  margin-left: 580px;
 }
 
 .form-inline .form-check {
@@ -2378,7 +2451,7 @@ textarea.form-control {
 .btn {
   display: inline-block;
   font-weight: 400;
-  color: #212529;
+  color: white;
   text-align: center;
   vertical-align: middle;
   -webkit-user-select: none;
@@ -2391,9 +2464,27 @@ textarea.form-control {
   font-size: 1rem;
   line-height: 1.5;
   border-radius: 0.25rem;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
-
+.btn-azul{
+  background-color: #6d91f3;
+  color: white;
+}
+a .btn-azul:hover{
+  background-color: #2d5de0;
+  color: white;
+}
+.btn-laranja{
+  background-color: #ffa45f;  
+  color: white;
+}
+a .btn-laranja:hover{
+  background-color: #fd7130;
+  color: white;
+}
+button.btn-laranja:hover{
+  background-color: #fd7130;
+  color: white;
+}
 @media (prefers-reduced-motion: reduce) {
   .btn {
     transition: none;
@@ -2421,14 +2512,14 @@ fieldset:disabled a.btn {
 
 .btn-primary {
   color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
+  background:#78aaf5;
+  border-color: #78aaf5;
 }
 
 .btn-primary:hover {
   color: #fff;
-  background-color: #0069d9;
-  border-color: #0062cc;
+  background-color: #448dfa;
+  border-color: #448dfa;
 }
 
 .btn-primary:focus, .btn-primary.focus {
@@ -3085,6 +3176,12 @@ input[type="button"].btn-block {
 }
 
 @media (min-width: 576px) {
+  .btn-buscar{
+    background-color: #f8e2d1;
+  }
+  .btn-buscar:hover{
+    background-color: #fdbe8e;
+  }
   .dropdown-menu-sm-left {
     right: auto;
     left: 0;
@@ -3096,6 +3193,12 @@ input[type="button"].btn-block {
 }
 
 @media (min-width: 768px) {
+  .btn-buscar{
+    background-color: #f8e2d1;
+  }
+  .btn-buscar:hover{
+    background-color: #fdbe8e;
+  }
   .dropdown-menu-md-left {
     right: auto;
     left: 0;
@@ -3107,6 +3210,12 @@ input[type="button"].btn-block {
 }
 
 @media (min-width: 992px) {
+  .btn-buscar{
+    background-color: #f8e2d1;
+  }
+  .btn-buscar:hover{
+    background-color: #fdbe8e;
+  }
   .dropdown-menu-lg-left {
     right: auto;
     left: 0;
@@ -3118,6 +3227,12 @@ input[type="button"].btn-block {
 }
 
 @media (min-width: 1200px) {
+  .btn-buscar{
+    background-color: #f8e2d1;
+  }
+  .btn-buscar:hover{
+    background-color: #fdbe8e;
+  }
   .dropdown-menu-xl-left {
     right: auto;
     left: 0;
@@ -4146,6 +4261,8 @@ input[type="button"].btn-block {
 
 .navbar {
   position: relative;
+  width: 100%;
+  margin-top: 0px;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
@@ -4156,7 +4273,9 @@ input[type="button"].btn-block {
   justify-content: space-between;
   padding: 0.5rem 1rem;
 }
-
+.bg-lightBlue{
+  background:#78aaf5;
+}
 .navbar > .container,
 .navbar > .container-fluid {
   display: -ms-flexbox;
@@ -4242,6 +4361,12 @@ input[type="button"].btn-block {
 }
 
 @media (max-width: 575.98px) {
+  .btn-buscar{
+    background-color: #f8e2d1;
+  }
+  .btn-buscar:hover{
+    background-color: #fdbe8e;
+  }
   .navbar-expand-sm > .container,
   .navbar-expand-sm > .container-fluid {
     padding-right: 0;
@@ -4250,6 +4375,12 @@ input[type="button"].btn-block {
 }
 
 @media (min-width: 576px) {
+  .btn-buscar{
+    background-color: #f8e2d1;
+  }
+  .btn-buscar:hover{
+    background-color: #fdbe8e;
+  }
   .navbar-expand-sm {
     -ms-flex-flow: row nowrap;
     flex-flow: row nowrap;
@@ -4292,6 +4423,12 @@ input[type="button"].btn-block {
 }
 
 @media (min-width: 768px) {
+  .btn-buscar{
+    background-color: #f8e2d1;
+  }
+  .btn-buscar:hover{
+    background-color: #fdbe8e;
+  }
   .navbar-expand-md {
     -ms-flex-flow: row nowrap;
     flex-flow: row nowrap;
@@ -4326,6 +4463,12 @@ input[type="button"].btn-block {
 }
 
 @media (max-width: 991.98px) {
+  .btn-buscar{
+    background-color: #f8e2d1;
+  }
+  .btn-buscar:hover{
+    background-color: #fdbe8e;
+  }
   .navbar-expand-lg > .container,
   .navbar-expand-lg > .container-fluid {
     padding-right: 0;
@@ -4334,6 +4477,12 @@ input[type="button"].btn-block {
 }
 
 @media (min-width: 992px) {
+  .btn-buscar{
+    background-color: #f8e2d1;
+  }
+  .btn-buscar:hover{
+    background-color: #fdbe8e;
+  }
   .navbar-expand-lg {
     -ms-flex-flow: row nowrap;
     flex-flow: row nowrap;
@@ -4368,6 +4517,12 @@ input[type="button"].btn-block {
 }
 
 @media (max-width: 1199.98px) {
+  .btn-buscar{
+    background-color: #f8e2d1;
+  }
+  .btn-buscar:hover{
+    background-color: #fdbe8e;
+  }
   .navbar-expand-xl > .container,
   .navbar-expand-xl > .container-fluid {
     padding-right: 0;
@@ -4376,6 +4531,12 @@ input[type="button"].btn-block {
 }
 
 @media (min-width: 1200px) {
+  .btn-buscar{
+    background-color: #f8e2d1;
+  }
+  .btn-buscar:hover{
+    background-color: #fdbe8e;
+  }
   .navbar-expand-xl {
     -ms-flex-flow: row nowrap;
     flex-flow: row nowrap;
@@ -4550,7 +4711,6 @@ input[type="button"].btn-block {
 }
 
 .card {
-  position: relative;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-direction: column;
@@ -4581,7 +4741,7 @@ input[type="button"].btn-block {
 .card-body {
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
-  padding: 1.25rem;
+  padding: 2.25rem;
 }
 
 .card-title {
@@ -4680,6 +4840,12 @@ input[type="button"].btn-block {
 }
 
 @media (min-width: 576px) {
+  .btn-buscar{
+  background-color: #f8e2d1;
+}
+.btn-buscar:hover{
+  background-color: #fdbe8e;
+}
   .card-deck {
     -ms-flex-flow: row wrap;
     flex-flow: row wrap;
@@ -5086,7 +5252,7 @@ a.badge-dark:focus, a.badge-dark.focus {
 .jumbotron {
   padding: 2rem 1rem;
   margin-bottom: 2rem;
-  background-color: #e9ecef;
+  background:#f8e2d1;
   border-radius: 0.3rem;
 }
 
@@ -5105,6 +5271,7 @@ a.badge-dark:focus, a.badge-dark.focus {
 .alert {
   position: relative;
   padding: 0.75rem 1.25rem;
+  margin-top: 120px;
   margin-bottom: 1rem;
   border: 1px solid transparent;
   border-radius: 0.25rem;

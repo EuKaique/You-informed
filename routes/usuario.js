@@ -55,27 +55,25 @@ router.post("/cadastro", (req, res) => {
     Usuario.findOne({ email: req.body.email })
       .then((usuario) => {
         if (usuario) {
-          req.flash(
-            "error_msg",
-            "Já existe uma conta com esse e-email no nosso sistema."
-          );
           res.redirect("/usuarios/cadastro");
         } else {
           const novoUsuario = new Usuario({
             nome: req.body.nome,
             email: req.body.email,
             senha: req.body.senha,
+            //Autoriza o usuário cadastrado ser um adm
+            //eAdmin: 1
           });
 
           //Gerar HASH de senha
-          //Salt -> um valor aleatório misturado com hash
           bcrypt.genSalt(10, (erro, salt) => {
             bcrypt.hash(novoUsuario.senha, salt, (erro, hash) => {
               if (erro) {
-                req.flash(
+                /*req.flash(
                   "error_msg",
                   "Houve um erro ao cadastrar usuário." + erro
                 );
+                */
                 res.redirect("/");
               }
 
@@ -84,11 +82,11 @@ router.post("/cadastro", (req, res) => {
               novoUsuario
                 .save()
                 .then(() => {
-                  req.flash("success_msg", "Usuário cadastrado com sucesso. ");
+                  //req.flash("success_msg", "Usuário cadastrado com sucesso. ");
                   res.redirect("/");
                 })
                 .catch((error) => {
-                  req.flash("error_msg", "Houve um erro ao cadastrar usuário.");
+                  //req.flash("error_msg", "Houve um erro ao cadastrar usuário.");
                   res.redirect("/");
                 });
             });
@@ -96,7 +94,7 @@ router.post("/cadastro", (req, res) => {
         }
       })
       .catch((error) => {
-        req.flash("error_msg", "Houve um erro interno." + error);
+        //req.flash("error_msg", "Houve um erro interno." + error);
         res.redirect("/");
       });
   }
@@ -118,7 +116,7 @@ router.post("/login", (req, res, next) => {
 //Logoff do sistema
 router.get("/logout", (req, res) => {
   req.logout();
-  req.flash("success_msg", "sair com sucesso!");
+  //req.flash("success_msg", "sair com sucesso!");
   res.redirect("/");
 });
 

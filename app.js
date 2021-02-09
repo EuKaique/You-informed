@@ -45,7 +45,7 @@
     //Middleware
         app.use((req, res, next) => {
             //para criar variáves globais
-            res.locals.success_msg = req.flash("success_msg"),
+            res.locals.success_msg = req.flash("success_msg")
             res.locals.error_msg = req.flash("error_msg")
             res.locals.error = req.flash("error")
             res.locals.user = req.user || null
@@ -101,12 +101,12 @@
             if(Noticia){
                res.render("Noticia/index", {Noticia: Noticia}) 
             }else {
-               req.flash("error_msg", "Está Noticia não existe.")
+               //req.flash("error_msg", "Está Noticia não existe.")
                res.redirect("/")
             }
 
         }).catch((error) => {
-            req.flash("error_msg", "Houve um erro interno." + error)
+            //req.flash("error_msg", "Houve um erro interno." + error)
             res.redirect("/")
         })    
     })
@@ -116,7 +116,7 @@
         Categoria.find().then((categorias) => {
             res.render("categorias/index", {categorias: categorias})
         }).catch((error) => {
-            req.flash("error_msg", "Houve um erro interno ao listar as categorias.")
+            //req.flash("error_msg", "Houve um erro interno ao listar as categorias.")
             res.redirect("/")
         }) 
     })
@@ -133,19 +133,19 @@
 
                 }).catch((error) => {
 
-                    req.flash("error_msg", "Houve um erro ao listar as noticias.")
+                    //req.flash("error_msg", "Houve um erro ao listar as noticias.")
                     res.redirect("/")
                 }) 
 
             } else {
 
-                req.flash("error_msg", "Essa categoria não existe.")
+                //eq.flash("error_msg", "Essa categoria não existe.")
                 res.redirect("/")    
 
             }
 
         }).catch((error) => {
-            req.flash("error_msg", "Houve um erro interno ao carregar a página dessa categoria." + error)
+           // req.flash("error_msg", "Houve um erro interno ao carregar a página dessa categoria." + error)
             res.redirect("/")
         })
     })

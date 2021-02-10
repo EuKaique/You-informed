@@ -182,7 +182,7 @@ router.post("/noticias/nova", eAdmin, (req, res) => {
       descricao: req.body.descricao,
       conteudo: req.body.conteudo,
       categoria: req.body.categoria,
-      autor: req.body.autor,
+      autor: req.body.autor
     };
 
     console.log(novaNoticia);
@@ -205,26 +205,24 @@ router.post("/noticias/nova", eAdmin, (req, res) => {
   }
 });
 
-//Página de edição de Noticia
+//Página de edição da Noticia
 router.get("/noticias/edit/:id", eAdmin, (req, res) => {
   //Buscar em seguidas
   Noticia.findOne({ _id: req.params.id })
     .then((Noticia) => {
       Categoria.find()
         .then((categorias) => {
-          res.render("admin/editnoticias", {
+          res.render("admin/editNoticias", {
             categorias: categorias,
             Noticia: Noticia,
           });
         })
-        /*
-        .catch((error) => {
-          req.flash("error_msg", "Houve um erro ao listar as categorias.");
-        */  
+        .catch(() => {
+          req.flash("error_msg", "Houve um erro ao listar as categorias."); 
           res.redirect("/admin/noticias");
-        });
-    /*
-    .catch((error) => {
+        })
+    .catch(() => {
+      /*
       req.flash(
         "error_msg",
         "Houve um erro ao carregar o formulário de edição."
@@ -232,17 +230,19 @@ router.get("/noticias/edit/:id", eAdmin, (req, res) => {
       */
       res.redirect("/admin/noticias");
     });
+    });
+  });  
 
 //Salvar a edição da Noticia
-router.post("/Noticia/edit", eAdmin, (req, res) => {
+router.post("/noticias/edit", eAdmin, (req, res) => {
   Noticia.findOne({ _id: req.body.id })
     .then((Noticia) => {
       (Noticia.titulo = req.body.titulo),
         (Noticia.slug = req.body.slug),
         (Noticia.descricao = req.body.descricao),
         (Noticia.conteudo = req.body.conteudo),
-        (Noticia.categoria = req.body.categoria);
-      Noticia.autor = req.body.autor;
+        (Noticia.categoria = req.body.categoria),
+        (Noticia.autor = req.body.autor);
 
       Noticia.save()
         .then(() => {
@@ -272,6 +272,6 @@ router.get("/noticias/deletar/:id", eAdmin, (req, res) => {
       //req.flash("error_msg", "Houve um erro interno.");
       res.redirect("/admin/noticias");
     });
-});
+  });
 
 module.exports = router;

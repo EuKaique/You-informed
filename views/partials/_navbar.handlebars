@@ -8,13 +8,13 @@
       <!-- Verificando se o usuário logado é um Administrador, se for mostrar opções no menu -->
       {{#ifCond user.eAdmin 1}}
           <li class="nav-item active">
-            <a class="nav-link" href="/admin">Início <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/">Início <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/admin/categorias">Categorias</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/admin/noticias">noticias</a>
+            <a class="nav-link" href="/admin/noticias">Noticias</a>
           </li>
       {{else}}
           <li class="nav-item active">
@@ -32,7 +32,7 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="#">Perfil</a>
           <a class="dropdown-item" href="#">Mensagens</a>
-          <a class="dropdown-item" href="/admin/noticias/add">Configurações</a>
+          <a class="dropdown-item" href="#">Configurações</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="/usuarios/logout">Sair</a>
         </div>
@@ -45,9 +45,9 @@
         <a class="nav-link" href="/usuarios/cadastro" >Cadastro</a>
       </li>
       {{/if}}
-    <form class="form-inline my-2 my-lg-0">
+    <form action="/noticia/index"  class="form-inline my-2 my-lg-0" method="get">
       <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar noticia" aria-label="Pesquisa">
-      <button class="btn btn-laranja my-2 my-sm-0" type="submit">Buscar</button>
+      <a href="/noticia/{{slug}}"><button class="btn btn-laranja my-2 my-sm-0">Buscar</button></a>
     </form>
   </div>
 </nav>

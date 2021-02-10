@@ -9,19 +9,19 @@
     <div class="card-body">
         <h4>Editar noticia</h4>
         <form action="/admin/noticia/edit" method="POST">
-            <input type="hidden" name="id" value="{{noticia._id}}">
+            <input type="hidden" name="id" value="{{Noticia._id}}">
 
             <label for="titulo">Título</label>
-            <input type="text" name="titulo" id="titulo" value="{{noticia.titulo}}"  class="form-control">
+            <input type="text" name="titulo" id="titulo" value="{{Noticia.titulo}}"  class="form-control">
 
             <label for="slug">Slug: </label>
-            <input type="text" name="slug" id="slug" value="{{noticia.slug}}" class="form-control">
+            <input type="text" name="slug" id="slug" value="{{Noticia.slug}}" class="form-control">
 
             <label for="descricao">Descrição: </label>
-            <input type="text" name="descricao" id="descricao" value="{{noticia.descricao}}" class="form-control">
+            <input type="text" name="descricao" id="descricao" value="{{Noticia.descricao}}" class="form-control">
 
             <label for="conteudo">Conteúdo: </label>
-            <textarea name="conteudo" class="form-control">{{noticia.conteudo}}"</textarea>
+            <textarea name="conteudo" class="form-control">{{Noticia.conteudo}}"</textarea>
 
             <label for="categoria">Categoria</label>
             <select name="categoria" class="custom-select">
@@ -32,7 +32,7 @@
                 {{/each}}
             </select>
 
-            <button class="btn btn-success mt-4" type="submit">Salvar edição</button>
+            <button class="btn btn-azul mt-4" type="submit">Salvar edição</button>
         </form>
     </div>
 </div>

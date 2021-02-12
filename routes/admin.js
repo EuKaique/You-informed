@@ -234,7 +234,7 @@ router.get("/noticias/edit/:id", eAdmin, (req, res) => {
   });  
 
 //Salvar a edição da Noticia
-router.post("/noticias/edit", eAdmin, (req, res) => {
+router.post("/noticia/edit", eAdmin, (req, res) => {
   Noticia.findOne({ _id: req.body.id })
     .then((Noticia) => {
       (Noticia.titulo = req.body.titulo),
@@ -260,6 +260,9 @@ router.post("/noticias/edit", eAdmin, (req, res) => {
       res.redirect("/admin/noticias");
     });
 });
+
+//
+
 
 //Excluir Noticia
 router.get("/noticias/deletar/:id", eAdmin, (req, res) => {

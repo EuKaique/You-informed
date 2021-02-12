@@ -62,7 +62,7 @@ router.post("/cadastro", (req, res) => {
             email: req.body.email,
             senha: req.body.senha,
             //Autoriza o usuário cadastrado ser um adm
-            //eAdmin: 1
+            eAdmin: 1
           });
 
           //Gerar HASH de senha

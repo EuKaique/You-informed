@@ -1,4 +1,4 @@
-/* Estilo da Postagem na página Home */
+/* Estilo da noticia na página inicial */
 .pb-100 {
 	padding-bottom: 100px;
 }
@@ -127,7 +127,6 @@ a.box_btn:hover::before {
 	z-index: -1;
 }
 
-/* PÁGINA DA POSTAGEM */
 
 
 

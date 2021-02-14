@@ -45,21 +45,12 @@
         <a class="nav-link" href="/usuarios/cadastro" >Cadastro</a>
       </li>
       {{/if}}
-    <form action="" class="form-inline my-2 my-lg-0" method="GET" role="group">
-      <input name="q" class="form-control mr-sm-2" type="search" placeholder="Pesquisar noticia" aria-label="Pesquisa" value="{{Noticia.titulo}}">
-      <a href="/noticias"><button class="btn btn-laranja my-2 my-sm-0" id="search">Buscar</button></a>
+     {{#if noticias}} 
+    <form action="/noticia/:titulo" class="form-inline my-2 my-lg-0" method="GET" role="group" id="form-Search">
+      <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar noticia" aria-label="Pesquisa" value="{{titulo}}" id="researching">
+      <a href="/noticia/{{titulo}}"><button class="btn btn-laranja my-2 my-sm-0" id="search">Buscar</button></a>
     </form>
+    {{/if}}
   </div>
 </nav>
-<!-- 
-<hr />
-      <ul class="list-group">
-      <% for(let i=0; i < movies.length; i++) { %>
-        <li class="list-group-item">
-          <strong><%= movies[i].title %></strong> (<%= movies[i].year %>)
-          <div class="text-muted">Starring <%= movies[i].cast %> and directed by <%= movies[i].directors %>. </div>
-        </li>
-      <% } %>
-      </ul>
-    </div>
--->
+

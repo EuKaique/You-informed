@@ -31,7 +31,7 @@
     //Sessão
         //Tudo que tiver app.use é um middleware
         app.use(session({
-            secret: "cursodenode",
+            secret: "Projeto_YouInformed",
             resave: true,
             saveUninitialized: true 
         }))
@@ -95,11 +95,11 @@
     }) 
     
     //Noticia - Leia Mais
-    app.get("/Noticia/:slug", (req, res) => {
+    app.get("/noticia/:slug", (req, res) => {
         Noticia.findOne({slug: req.params.slug}).then((Noticia) =>{
 
             if(Noticia){
-               res.render("Noticia/index", {Noticia: Noticia}) 
+               res.render("noticia/index", {Noticia: Noticia}) 
             }else {
                //req.flash("error_msg", "Está Noticia não existe.")
                res.redirect("/")
@@ -110,7 +110,23 @@
             res.redirect("/")
         })    
     })
+    //Buscar noticia pelo titulo
+    app.get("/noticia/:titulo", (req, res) => {
+        Noticia.findOne({titulo: req.params.titulo}).then((Noticia) =>{
 
+            if(Noticia){
+               res.render("noticia/index", {Noticia: Noticia}) 
+            }else {
+               //req.flash("error_msg", "Está Noticia não existe.")
+               res.redirect("/")
+            }
+
+        }).catch((err) => {
+            //req.flash("error_msg", "Houve um erro interno." + error)
+            res.redirect("/");
+            console.log("Não foi possível buscar a noticia: " + err);
+        })    
+    })
     //Listagem de categorias
     app.get("/categorias", (req, res) => {
         Categoria.find().then((categorias) => {

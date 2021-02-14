@@ -1,4 +1,12 @@
-const express = require('express');
+document.getElementById('search').onclick = function(){
+  const pesquisando = document.getElementById('researching').value
+  //alert(pesquisando)
+  window.open(pesquisando, "_self")
+
+  //const formulario = document.getElementById('form-Search')
+
+}
+/*const express = require('express');
 const router = express.Router();
  
 function simplify(text){
@@ -13,7 +21,7 @@ function simplify(text){
     return arr.filter(item => (item));
 }
  
-/* GET home page. */
+ GET home page. 
 router.get('/', function(req, res, next) {
   if(!req.Noticia.q)
     return res.render('index', {noticias: [], query: '' });
@@ -31,3 +39,4 @@ router.get('/', function(req, res, next) {
 });
  
 module.exports = router;
+*/

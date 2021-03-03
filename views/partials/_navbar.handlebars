@@ -11,10 +11,7 @@
             <a class="nav-link" href="/">Início <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/admin/categorias">Categorias</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/admin/noticias">Noticias</a>
+            <a class="nav-link" href="/categorias">Categorias</a>
           </li>
       {{else}}
           <li class="nav-item active">
@@ -30,10 +27,12 @@
           {{user.nome}}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Perfil</a>
+          <!--a class="dropdown-item" href="#">Perfil</a>
           <a class="dropdown-item" href="#">Mensagens</a>
           <a class="dropdown-item" href="#">Configurações</a>
-          <div class="dropdown-divider"></div>
+          <div class="dropdown-divider"></div-->
+          <a class="dropdown-item" href="/admin/categorias">Editar categorias</a>
+          <a class="dropdown-item" href="/admin/noticias">Editar noticias</a>
           <a class="dropdown-item" href="/usuarios/logout">Sair</a>
         </div>
       </li>
@@ -41,9 +40,9 @@
       <li class="nav-item ">
         <a class="nav-link" href="/usuarios/login" >Login</a>
       </li>
-      <li class="nav-item ">
+      <!--li class="nav-item ">
         <a class="nav-link" href="/usuarios/cadastro" >Cadastro</a>
-      </li>
+      </li-->
       {{/if}}
      {{#if noticias}} 
     <form action="/noticia/:titulo" class="form-inline my-2 my-lg-0" method="GET" role="group" id="form-Search">

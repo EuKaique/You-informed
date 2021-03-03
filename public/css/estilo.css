@@ -1,4 +1,12 @@
 /* Estilo da noticia na página inicial */
+#form-Search{
+	margin-left: 38.8rem;
+}
+.dropdown-item:hover{
+	background-color: rgb(255, 216, 184);
+	transition-delay: 0.1s;
+	color: white;
+}
 .pb-100 {
 	padding-bottom: 100px;
 }
@@ -66,7 +74,7 @@ a {
 }
 .single-blog:hover img {
 	opacity: .85;
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=85)"
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=85)";
 }
 .post-category {
 	position: absolute;

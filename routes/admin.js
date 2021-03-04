@@ -180,6 +180,7 @@ router.post("/noticias/nova", eAdmin, (req, res) => {
       titulo: req.body.titulo,
       slug: req.body.slug,
       descricao: req.body.descricao,
+      imagem: req.body.imagem,
       conteudo: req.body.conteudo,
       categoria: req.body.categoria,
       autor: req.body.autor
@@ -240,6 +241,7 @@ router.post("/noticia/edit", eAdmin, (req, res) => {
       (Noticia.titulo = req.body.titulo),
         (Noticia.slug = req.body.slug),
         (Noticia.descricao = req.body.descricao),
+        (Noticia.imagem = req.body.imagem),
         (Noticia.conteudo = req.body.conteudo),
         (Noticia.categoria = req.body.categoria),
         (Noticia.autor = req.body.autor);

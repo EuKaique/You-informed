@@ -6,6 +6,10 @@ const Categoria = new Schema({
         type: String,
         required: true
     },
+    icone: {
+        type: String,
+        required: true
+    },
     slug: {
         type: String,
         required: true

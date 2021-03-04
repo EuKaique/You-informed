@@ -14,6 +14,10 @@ const Noticia = new Schema({
         type: String,
         required: true
     },
+    imagem:{
+        type: String,
+        required: true
+    },
     conteudo:{
         type: String,
         required: true

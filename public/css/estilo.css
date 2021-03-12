@@ -3,38 +3,6 @@
   position: relative; /* cria o contexto de posicionamento do botão */
   margin-left: 600px;
 }
-#input-search {
-  width: 320px;		
-  border-radius: 10px;
-  border: none;
-  height: 45px;
-  
-} /* define a largura do campo igual a largura do container */
-#input-search,
-#button-search {
-  padding: 10px;
-}
-#button-search {
-  position: absolute;
-  top: 0;
-  right: 0;
-  border-radius: 0 10px 10px 0;
-  border: none;
-  height: 45px;
-  background-color: rgb(230, 230, 230);
-  /* posiciona o botão em relação ao container, mas
-	como o campo está exatamente contido no container
-	o posicionamento se dá também em relação ao campo */
-}
-#button-search img{
-	width: 30px;
-	height: 30px;
-}
-#button-search:hover{
-	background-color: rgb(255, 216, 184);
-	transition-delay: 0.1s;
-	color: white; 
-}
 .dropdown-item:hover {
   background-color: rgb(255, 216, 184);
   transition-delay: 0.1s;
@@ -101,6 +69,7 @@ a {
 .post-category a {
   display: inline-block;
   background-color: #ff7200;
+  border-radius: 6px;
   color: #fff;
   font-size: 15px;
   padding: 5px 20px;
@@ -137,7 +106,8 @@ a {
 }
 .blog-content a.box_btn {
   display: inline-block;
-  background-color: #ff7200;
+  background-color: #008cff;
+  border-radius: 6px;
   padding: 5px 15px;
   color: #fff;
   text-transform: capitalize;
@@ -148,7 +118,7 @@ a.box_btn::before {
   content: "";
   width: 100%;
   height: 100%;
-  background-color: #cc5b00;
+  background-color: #0070cc;
   left: -100%;
   top: 0;
   -webkit-transition: 0.5s;

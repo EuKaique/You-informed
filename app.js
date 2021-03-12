@@ -110,23 +110,7 @@
             res.redirect("/")
         })    
     })
-    //Buscar noticia pelo titulo
-    app.get("/noticia/:titulo", (req, res) => {
-        Noticia.findOne({titulo: req.params.titulo}).then((Noticia) =>{
 
-            if(Noticia){
-               res.render("noticia/index", {Noticia: Noticia}) 
-            }else {
-               //req.flash("error_msg", "Está Noticia não existe.")
-               res.redirect("/")
-            }
-
-        }).catch((err) => {
-            //req.flash("error_msg", "Houve um erro interno." + error)
-            res.redirect("/");
-            console.log("Não foi possível buscar a noticia: " + err);
-        })    
-    })
     //Listagem de categorias
     app.get("/categorias", (req, res) => {
         Categoria.find().then((categorias) => {

@@ -2382,7 +2382,6 @@ textarea.form-control {
   flex-flow: row wrap;
   -ms-flex-align: center;
   align-items: center;
-  margin-left: 560px;
 }
 
 .form-inline .form-check {
@@ -4305,7 +4304,7 @@ input[type="button"].btn-block {
   display: inline-block;
   padding-top: 0.3125rem;
   padding-bottom: 0.3125rem;
-  margin-right: 1rem;
+  margin-right: 41rem;
   font-size: 1.25rem;
   line-height: inherit;
   white-space: nowrap;

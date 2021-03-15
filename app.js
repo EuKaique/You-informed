@@ -1,5 +1,6 @@
 //Carregando módulos
     const express = require("express")
+
     const handlebars = require("express-handlebars")
     const bodyParser = require("body-parser")
     const moment = require('moment')
@@ -26,6 +27,7 @@
     const {eAdmin} = require("./helpers/eAdmin")    
 
     const db = require("./config/db")
+const { query } = require("express")
 
 //Configurações
     //Sessão
@@ -66,13 +68,12 @@
             
         }));
 
-        
-        
         app.set('view engine', 'handlebars');    
 
     // Mongoose
+
         mongoose.connect(db.mongoURI, {useNewUrlParser: true}).then(() => {
-            console.log("Conectado ao Banco de dados!")
+            console.log('Banco conectado')
         }).catch((error) => {
             console.log("Erro ao conectar: "+ error)
         }) 
@@ -80,8 +81,6 @@
     //Public 
         app.use(express.static(path.join(__dirname, "public")))
         
-
-
 //Rotas
     
     //Rota Principal
@@ -92,8 +91,14 @@
             req.flash("error_msg", "Houve um erro interno." + error)
             res.redirect("/404")
         })
-    }) 
-    
+    })
+    /*
+    function simplify(text) {
+        const regex = /[\s,\.;:\(\)\-\'\+]/;
+        return text.toUpperCase().split(regex);
+      }
+    */
+
     //Noticia - Leia Mais
     app.get("/noticia/:slug", (req, res) => {
         Noticia.findOne({slug: req.params.slug}).then((Noticia) =>{
@@ -109,6 +114,21 @@
             //req.flash("error_msg", "Houve um erro interno." + error)
             res.redirect("/")
         })    
+    })
+    
+    //Buscar Notícia pelo título
+    app.get("/noticia/:titulo", (req, res) => {
+        
+        const query = Noticia.find({titulo: req.params.titulo}).then((Noticia) =>{
+            if(Noticia){
+                res.render("noticia/index", {Noticia: Noticia}) 
+             }else {
+                //req.flash("error_msg", "Está Noticia não existe.")
+                res.redirect("/")
+             }
+        })
+        const promise = query.exec()
+        return promise
     })
 
     //Listagem de categorias
@@ -154,7 +174,6 @@
     app.get("/404", (req, res) => {
         res.send("Error 404!")
     })
-    
     //eAdmin -> Verificar se o usuário tem permissão
     app.use('/admin', eAdmin, admin)
     app.use("/usuarios", usuarios)

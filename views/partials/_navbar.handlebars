@@ -45,9 +45,9 @@
       </li-->
       {{/if}}
      {{#if noticias}} 
-  <form class="form-inline" id="formulario">
-    <input class="form-control mr-sm-2" type="search" placeholder="Procurar notícia" aria-label="procurar">
-    <button class="btn btn-laranja my-2 my-sm-0" type="submit" onclick={`pesquisar()`}>Buscar</button>
+  <form class="form-inline" action="/noticia/{{titulo}}" method="GET">
+    <input class="form-control mr-sm-2" type="search" name="query" placeholder="Procurar notícia" aria-label="procurar">
+    <button class="btn btn-laranja my-2 my-sm-0" type="submit" onclick="{{Buscar}}">Buscar</button>
   </form>
     {{/if}}
   </div>

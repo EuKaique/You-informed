@@ -6,14 +6,28 @@ const Categoria = mongoose.model("categorias");
 require("../models/Noticia");
 const Noticia = mongoose.model("noticias");
 const { eAdmin } = require("../helpers/eAdmin");
+const multer = require("multer")
+const path = require("path")
 
 router.get("/", (req, res) => {
   res.render("admin/index");
 });
 
-router.get("/posts", eAdmin, (req, res) => {
-  res.send("Página de posts");
-});
+    //Envio de Imagens
+    const storage = multer.diskStorage({
+      destination: function(req, file, callback){
+          callback(null, "./public/images")
+      },
+      filename: function(req, file, callback){
+          callback(null, file.originalname + Date.now() + path.extname(file.originalname))
+      }
+  })    
+  const upload = multer({
+      storage: storage,
+      limits: {
+          fieldSize: 1024 * 1024 * 3,
+      }
+  })
 
 //Lista de categorias
 router.get("/categorias", eAdmin, (req, res) => {
@@ -34,7 +48,7 @@ router.get("/categorias/add", eAdmin, (req, res) => {
 });
 
 //Salvar Categoria no banco
-router.post("/categorias/nova", eAdmin, (req, res) => {
+router.post("/categorias/nova", upload.single("icone"), eAdmin, (req, res) => {
   var erros = [];
 
   //Validação do formulário
@@ -64,6 +78,7 @@ router.post("/categorias/nova", eAdmin, (req, res) => {
     const novaCategoria = {
       nome: req.body.nome,
       slug: req.body.slug,
+      icone: req.file.filename
     };
 
     new Categoria(novaCategoria)
@@ -97,10 +112,10 @@ router.get("/categorias/edit/:id", eAdmin, (req, res) => {
 });
 
 //Salvar a edição da categoria
-router.post("/categorias/edit", eAdmin, (req, res) => {
+router.post("/categorias/edit", upload.single("icone"), eAdmin, (req, res) => {
   Categoria.findOne({ _id: req.body.id })
     .then((categoria) => {
-      (categoria.nome = req.body.nome), (categoria.slug = req.body.slug);
+      (categoria.nome = req.body.nome), (categoria.slug = req.body.slug), (categoria.icone = req.file.filename);
 
       categoria
         .save()
@@ -165,7 +180,7 @@ router.get("/noticias/add", eAdmin, (req, res) => {
 });
 
 //Salvar dados da criação da Noticia no banco
-router.post("/noticias/nova", eAdmin, (req, res) => {
+router.post("/noticias/nova", upload.single("imagem"), eAdmin, (req, res) => {
   var erros = [];
 
   if (req.body.categoria === "0") {
@@ -180,7 +195,7 @@ router.post("/noticias/nova", eAdmin, (req, res) => {
       titulo: req.body.titulo,
       slug: req.body.slug,
       descricao: req.body.descricao,
-      imagem: req.body.imagem,
+      imagem: req.file.filename,
       conteudo: req.body.conteudo,
       categoria: req.body.categoria,
       autor: req.body.autor
@@ -235,16 +250,16 @@ router.get("/noticias/edit/:id", eAdmin, (req, res) => {
   });  
 
 //Salvar a edição da Noticia
-router.post("/noticia/edit", eAdmin, (req, res) => {
+router.post("/noticias/edit", upload.single("imagem"), eAdmin, (req, res) => {
   Noticia.findOne({ _id: req.body.id })
     .then((Noticia) => {
-      (Noticia.titulo = req.body.titulo),
-        (Noticia.slug = req.body.slug),
-        (Noticia.descricao = req.body.descricao),
-        (Noticia.imagem = req.body.imagem),
-        (Noticia.conteudo = req.body.conteudo),
-        (Noticia.categoria = req.body.categoria),
-        (Noticia.autor = req.body.autor);
+      Noticia.titulo = req.body.titulo,
+      Noticia.slug = req.body.slug,
+      Noticia.descricao = req.body.descricao,
+      Noticia.imagem = req.file.filename,
+      Noticia.conteudo = req.body.conteudo,
+      Noticia.categoria = req.body.categoria,
+      Noticia.autor = req.body.autor;
 
       Noticia.save()
         .then(() => {

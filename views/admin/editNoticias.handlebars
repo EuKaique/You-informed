@@ -3,12 +3,10 @@
     {{else}}
 {{/each}}
 
-
-
 <div class="card">
     <div class="card-body">
         <h4>Editar noticia</h4>
-        <form action="/admin/noticia/edit" method="POST">
+        <form action="/admin/noticias/edit" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="id" value="{{Noticia._id}}">
 
             <label for="titulo">Título</label>
@@ -21,7 +19,7 @@
             <input type="text" name="descricao" id="descricao" value="{{Noticia.descricao}}" class="form-control">
 
             <label for="imagem">Imagem: </label>
-            <input type="file" name="imagem" id="imagem" class="form-control">
+            <input type="file" name="imagem" id="imagem" value="{{Noticia.imagem}}" class="form-control" accept="image/*">
 
             <label for="conteudo">Conteúdo: </label>
             <textarea name="conteudo" class="form-control">{{Noticia.conteudo}}"</textarea>

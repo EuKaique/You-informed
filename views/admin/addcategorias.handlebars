@@ -6,12 +6,12 @@
 <h3>Nova categoria:</h3>
 <div class="card">
     <div class="card-body">
-        <form action="/admin/categorias/nova" method="post">
+        <form action="/admin/categorias/nova" method="POST" enctype="multipart/form-data">
             <label for="nome">Nome:</label>
             <input class="form-control" type="text" id="nome" name="nome"  placeholder="Nome da categoria">
 
-            <label for="slug">Icone:</label>
-            <input class="form-control" type="file" id="icone" name="icone"  placeholder="Icone da categoria">
+            <label for="icone">Icone:</label>
+            <input class="form-control" type="file" id="icone" name="icone"  placeholder="Icone da categoria" accept="image/*">
 
             <label for="slug">Slug:</label>
             <input class="form-control" type="text" id="slug" name="slug"  placeholder="Slug da categoria">

@@ -111,7 +111,7 @@ a {
   padding: 5px 15px;
   color: #fff;
   text-transform: capitalize;
-  margin-top: 20px;
+  margin-top: 5px;
 }
 a.box_btn::before {
   position: absolute;

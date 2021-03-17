@@ -2,7 +2,7 @@
    <h1 class="display-4">Bem-vindo ao You informed</h1>
    <p class="lead">você sempre informado</p>
    <hr class="my-4">
-   <p>Aqui você vê o que é n  oticia no Brasil e no mundo</p>
+   <p>Aqui você vê oque é noticia no Brasil e no mundo</p>
    <!--a class="btn btn-azul btn-lg" href="/usuarios/cadastro" role="button">Crie uma conta</a-->
 </div>
 <hr>
@@ -23,7 +23,6 @@
                <div class="col-lg-4 col-sm-6 col-md-6">
                   <div class="single-blog">
                      <div class="blog-img">
-                        <img src="http://infinityflamesoft.com/html/abal-preview/assets/img/blog/blog1.jpg" alt="">
                         <div class="post-category">
                            <a href="/categorias/{{categoria.slug}}">{{categoria.nome}}</a>
                         </div>
@@ -35,7 +34,7 @@
                               <ul>
                                  <li>{{#formatDate data}}{{/formatDate}}</li>
                               </ul>
-                              <img src="" alt="imagem">
+                              <img src="/images/{{imagem}}" alt="imagem" class="rounded float-left" width="100%;" height="40%;">
                            </div>
                         </div>
                         <p>{{descricao}}</p>

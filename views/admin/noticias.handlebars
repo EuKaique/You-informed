@@ -7,7 +7,7 @@
         <div class="card-body">
             <h4>Título: {{titulo}}</h4>
             <p>Slug: {{slug}}</p>
-            <img src="" alt="imagem">
+            <img src="/images/{{imagem}}" class="rounded float-left sm-6" alt="imagem" width="400px;" height="300px;">
             <p>Descrição: {{descricao}}</p>
             <small>Data da criação: {{#formatDate data}}  {{/formatDate}}</small><br>
             <small>Categoria: {{categoria.nome}}</small>
@@ -17,5 +17,5 @@
         </div>
     </div>
 {{else}}
-    <p>Nenhuma noticia registada.</p>
+    <p>Nenhuma noticia registrada.</p>
 {{/each}}

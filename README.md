@@ -1,6 +1,3 @@
 # You informed
- Funciona como um site de noticias, o admin cadastra as noticias, para que qualquer pessoa possa visualizar as noticias
+ Funciona como um site de noticias, o admin cadastra as noticias, para que qualquer pessoa possa ver
 
-#### Projeto em desenvolvimento :warning:
-
-- previsão de conclusão: 19/03/2021
